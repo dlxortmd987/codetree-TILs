@@ -6,22 +6,18 @@ public class Main {
 
         int n = sc.nextInt();
 
-        List<Integer> arr = new ArrayList<>();
+        PriorityQueue<Integer> q = new PriorityQueue<>();
 
         for (int i = 0; i < n; i++) {
-            arr.add(sc.nextInt());
+            q.add(sc.nextInt());
         }
 
         int sum = 0;
-        while (arr.size() > 1) {
-            Collections.sort(arr);
-
-            int v = arr.get(0) + arr.get(1);
+        while (q.size() > 1) {
+            int v = q.poll() + q.poll();
             sum += v;
-            arr.add(v);
-            arr.remove(0);
-            arr.remove(0);
-            
+
+            q.add(v);
         }
 
         System.out.println(sum);
