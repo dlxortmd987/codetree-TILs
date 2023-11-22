@@ -6,18 +6,27 @@ public class Main {
 
         int n = sc.nextInt();
 
-        int res = 0;
+        int res = Integer.MAX_VALUE;
 
-        res += n / 5;
-        n %= 5;
+        for (int i = n / 5; i >= 0; i--) {
+            int t = 0;
+            int n1 = n;
+            t += i;
+            n1 -= i * 5;
 
-        res += n / 2;
-        n %= 2;
+            t += n1 / 2;
+            n1 %= 2;
 
-        if (n != 0) {
-            System.out.println(-1);
-        } else {
-            System.out.println(res);
+            if (n1 == 0) {
+                res = Math.min(t, res);
+            }
         }
+
+        if (res == Integer.MAX_VALUE) {
+            System.out.println(-1);    
+            return;
+        }
+
+        System.out.println(res);
     }
 }
